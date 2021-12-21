@@ -1,0 +1,34 @@
+in backend:
+-----------
+1) Adding Checkout integrations , allow user to login by facebook or google & if user login email must confirmed first
+2) Make Auto Mapper
+3) Make ViewModels
+4) Make Service for Authentication & Unit of Works
+5) Make Shopping Cart related to UsersId if userAuthenticated insteads of Sessions
+
+
+
+
+
+
+
+
+
+
+
+in frontend:
+------------
+
+1) auto complete on search engine
+2) Add Ajax Calls on CRUD Operations
+
+
+
+
+
+Refactoring Code & apply security:
+----------------------------------
+. Apply CleanCode
+. Apply Solid Principles
+. Apply Security on a Sensitive Data and on forms (antiforgery attacks)
+. Handle errors in best practice
