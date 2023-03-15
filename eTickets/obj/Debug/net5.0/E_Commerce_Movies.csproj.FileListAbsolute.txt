@@ -792,7 +792,6 @@ E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\bin\Debug\net5.0\E_
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\bin\Debug\net5.0\E_Commerce_Movies.runtimeconfig.json
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\bin\Debug\net5.0\E_Commerce_Movies.runtimeconfig.dev.json
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\bin\Debug\net5.0\E_Commerce_Movies.dll
-E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\bin\Debug\net5.0\ref\E_Commerce_Movies.dll
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\bin\Debug\net5.0\E_Commerce_Movies.pdb
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Antiforgery.dll
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
@@ -1151,7 +1150,6 @@ E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\E_
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\E_Commerce_Movies.RazorAssemblyInfo.cache
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\E_Commerce_Movies.RazorAssemblyInfo.cs
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\staticwebassets\E_Commerce_Movies.StaticWebAssets.Manifest.cache
-E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\staticwebassets\E_Commerce_Movies.StaticWebAssets.xml
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\scopedcss\bundle\E_Commerce_Movies.styles.css
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\E_Commerce_Movies.TagHelpers.input.cache
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\E_Commerce_Movies.TagHelpers.output.cache
@@ -1202,3 +1200,10 @@ E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\Ra
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\Razor\Views\Shared\_Identity.cshtml.g.cs
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\Razor\Views\Account\Users.cshtml.g.cs
 E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\Razor\Views\Account\AccessDenied.cshtml.g.cs
+E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\bin\Debug\net5.0\E_Commerce_Movies.StaticWebAssets.xml
+E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\staticwebassets\E_Commerce_Movies.StaticWebAssets.Pack.cache
+E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\staticwebassets\msbuild.E_Commerce_Movies.Microsoft.AspNetCore.StaticWebAssets.props
+E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\staticwebassets\msbuild.build.E_Commerce_Movies.props
+E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.E_Commerce_Movies.props
+E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.E_Commerce_Movies.props
+E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\obj\Debug\net5.0\refint\E_Commerce_Movies.dll

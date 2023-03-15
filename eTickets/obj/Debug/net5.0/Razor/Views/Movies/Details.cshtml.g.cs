@@ -42,7 +42,9 @@ using Microsoft.AspNetCore.Identity;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b7f9b64b27458e50c277feda800b7cae43c5db99", @"/Views/Movies/Details.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1d20e3541db7ea3506359a90b020fa6e71bb3737", @"/Views/_ViewImports.cshtml")]
+    #nullable restore
     public class Views_Movies_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Movie>
+    #nullable disable
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Cinemas", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Details", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -131,7 +133,7 @@ WriteAttributeValue("", 671, Model.Name, 671, 11, false);
 #line hidden
 #nullable disable
             WriteLiteral("</p>\r\n                        <p class=\"card-text\">\r\n                            <b>Cinema: </b>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f9b64b27458e50c277feda800b7cae43c5db998446", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f9b64b27458e50c277feda800b7cae43c5db998492", async() => {
                 WriteLiteral("\r\n                                ");
 #nullable restore
 #line 29 "E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\Views\Movies\Details.cshtml"
@@ -172,7 +174,7 @@ WriteAttributeValue("", 671, Model.Name, 671, 11, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </p>\r\n                        <p class=\"card-text\">\r\n                            <b>Producer: </b>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f9b64b27458e50c277feda800b7cae43c5db9911338", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f9b64b27458e50c277feda800b7cae43c5db9911384", async() => {
                 WriteLiteral("\r\n                                ");
 #nullable restore
 #line 35 "E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\Views\Movies\Details.cshtml"
@@ -293,7 +295,7 @@ WriteAttributeValue("", 3037, actor.Actor.ProfilePictureURL, 3037, 30, false);
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(" style=\"max-width: 150px\" />\r\n                                        <br />\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f9b64b27458e50c277feda800b7cae43c5db9918002", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f9b64b27458e50c277feda800b7cae43c5db9918048", async() => {
 #nullable restore
 #line 65 "E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\Views\Movies\Details.cshtml"
                                                                                                                  Write(actor.Actor.FullName);
@@ -348,7 +350,7 @@ WriteAttributeValue("", 3037, actor.Actor.ProfilePictureURL, 3037, 30, false);
                     <div class=""card-footer"">
                         <p class=""card-text"">
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f9b64b27458e50c277feda800b7cae43c5db9921268", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f9b64b27458e50c277feda800b7cae43c5db9921314", async() => {
                 WriteLiteral("\r\n                                Back to List\r\n                            ");
             }
             );
@@ -365,7 +367,7 @@ WriteAttributeValue("", 3037, actor.Actor.ProfilePictureURL, 3037, 30, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f9b64b27458e50c277feda800b7cae43c5db9922609", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f9b64b27458e50c277feda800b7cae43c5db9922655", async() => {
                 WriteLiteral("<i class=\"bi bi-cart-plus\" ></i>\r\n                            Add to Cart (Price ");
 #nullable restore
 #line 81 "E:\Web Development Track\Projects\E_Commerce_Movies\eTickets\Views\Movies\Details.cshtml"
@@ -420,16 +422,26 @@ AddHtmlAttributeValue("  ", 3865, (DateTime.Now > Model.EndDate) ? "disabled" : 
             WriteLiteral("\r\n                        </p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>");
         }
         #pragma warning restore 1998
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<Movie> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<Movie> Html { get; private set; } = default!;
+        #nullable disable
     }
 }
 #pragma warning restore 1591

@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,11 +23,13 @@ namespace E_Commerce_Movies
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration , IWebHostEnvironment env)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
             Env = env;
         }
+
+
 
         public IConfiguration Configuration { get; }
         public IWebHostEnvironment Env { get; }
@@ -80,7 +81,8 @@ namespace E_Commerce_Movies
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
 
 
             }
@@ -92,7 +94,7 @@ namespace E_Commerce_Movies
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            
+
             app.UseRouting();
             app.UseSession();
 
@@ -108,7 +110,7 @@ namespace E_Commerce_Movies
                     name: "default",
                     pattern: "{controller=movies}/{action=Index}/{id?}");
             });
-
+            
             //Seed database
             //because i want to use this service every time my program starts i'm using injected service this way 
 

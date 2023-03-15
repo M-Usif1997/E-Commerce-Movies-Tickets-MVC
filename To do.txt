@@ -16,11 +16,13 @@ in backend:
 
 
 
+
 in frontend:
 ------------
 
 1) auto complete on search engine
 2) Add Ajax Calls on CRUD Operations
+3) Can Upload Photos while add movies
 
 
 
@@ -30,5 +32,6 @@ Refactoring Code & apply security:
 ----------------------------------
 . Apply CleanCode
 . Apply Solid Principles
-. Apply Security on a Sensitive Data and on forms (antiforgery attacks)
+. Apply Security on a Sensitive Data like : (Sql connections and Users Email and Password in DBIntializer) and on forms (antiforgery attacks)
 . Handle errors in best practice
+. Apply Unit of Works
