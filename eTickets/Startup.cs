@@ -81,8 +81,7 @@ namespace E_Commerce_Movies
         {
             if (env.IsDevelopment())
             {
-                app.UseExceptionHandler("/Error");
-                app.UseHsts();
+                app.UseDeveloperExceptionPage();
 
 
             }
@@ -90,7 +89,8 @@ namespace E_Commerce_Movies
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                
+                app.UseHsts();
+
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
