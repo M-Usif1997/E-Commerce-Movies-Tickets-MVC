@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="MovieCategory" class="control-label"></label>
-                                <select asp-for="MovieCategory" class="custom-select mr-sm-2" asp-items="@Html.GetEnumSelectList<MovieCategory>()">
+                                <select asp-for="MovieCategory" class="custom-select mr-sm-2" asp-items="@ Html.GetEnumSelectList<MovieCategory>()">
                                     <option value="">---</option>
                                 </select>
 
