@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Data.Services
 {
-  public  interface IMoviesService : IEntityBaseRepository<Movie>
+  public  interface IMoviesRepo : IEntityBaseRepository<Movie>
     {
 
         Task AddNewMovieAsync(NewMovieVM data);

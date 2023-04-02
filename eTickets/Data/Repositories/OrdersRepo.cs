@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Data.Services
 {
-    public class OrdersService : IOrdersService
+    public class OrdersRepo : IOrdersRepo
     {
 
         private readonly AppDbContext _context;
-        public OrdersService(AppDbContext context)
+        public OrdersRepo(AppDbContext context)
         {
             _context = context;
         }

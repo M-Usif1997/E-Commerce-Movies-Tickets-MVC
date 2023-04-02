@@ -1,5 +1,6 @@
 using E_Commerce_Movies.Data;
 using E_Commerce_Movies.Data.Cart;
+using E_Commerce_Movies.Data.Repositories;
 using E_Commerce_Movies.Data.Services;
 using E_Commerce_Movies.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -23,16 +24,15 @@ namespace E_Commerce_Movies
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            Env = env;
+            
         }
 
 
 
         public IConfiguration Configuration { get; }
-        public IWebHostEnvironment Env { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -42,11 +42,11 @@ namespace E_Commerce_Movies
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // Services configuration
-            services.AddScoped<IActorsService, ActorsService>();
-            services.AddScoped<IProducersService, ProducersService>();
-            services.AddScoped<ICinemasService, CinemasService>();
-            services.AddScoped<IMoviesService, MoviesService>();
-            services.AddScoped<IOrdersService, OrdersService>();
+            services.AddScoped<IActorsRepo,ActorsRepo>();
+            services.AddScoped<IProducersRepo, ProducersRepo>();
+            services.AddScoped<ICinemasRepo, CinemasRepo>();
+            services.AddScoped<IMoviesRepo, MoviesRepo>();
+            services.AddScoped<IOrdersRepo, OrdersRepo>();
 
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); //to be used from Non-Controller class
@@ -63,13 +63,8 @@ namespace E_Commerce_Movies
      
             });
 
-            var builder = services.AddControllersWithViews();
+             services.AddControllersWithViews();
 
-            if (Env.IsDevelopment())
-            {
-
-                builder.AddRazorRuntimeCompilation();
-            }
 
 
           

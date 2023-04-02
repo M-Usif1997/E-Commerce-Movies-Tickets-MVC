@@ -17,13 +17,16 @@ namespace E_Commerce_Movies.Data.ViewModels
 
         [Required(ErrorMessage = "Username is required")]
         [Remote(action: "IsUsernameInUse", controller: "Account")]
+
         [MaxLength(50, ErrorMessage = "Name Cannot Be More Than 50 Character")]
         [Display(Name = "Username")]
-        
         public string Username { get; set; }
 
+
+        [Remote(action: "CheckUniqueEmailAddress", controller: "Account")]
         [Display(Name = "Email address")]
         [Required(ErrorMessage = "Email address is required")]
+        
         public string EmailAddress { get; set; }
 
         [Required]

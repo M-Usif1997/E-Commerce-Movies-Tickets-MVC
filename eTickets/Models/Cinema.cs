@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Models
 {
-    public class Cinema : IEntityBase
+    public class Cinema 
     {
         [Key]
         public int Id { get; set; }

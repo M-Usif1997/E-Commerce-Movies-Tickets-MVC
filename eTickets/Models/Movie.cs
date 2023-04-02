@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Models
 {
-    public class Movie : IEntityBase
+    public class Movie 
     {
         [Key]
         public int Id { get; set; }

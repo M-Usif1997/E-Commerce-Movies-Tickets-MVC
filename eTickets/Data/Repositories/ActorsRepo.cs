@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace E_Commerce_Movies.Data.Services
+namespace E_Commerce_Movies.Data.Repositories
+
 {
-    public class ActorsService : EntityBaseRepository<Actor>, IActorsService
+    public class ActorsRepo : EntityBaseRepository<Actor>, IActorsRepo
     {
-        public ActorsService(AppDbContext context) : base(context) { }
+        public ActorsRepo(AppDbContext context) : base(context) { }
     }
 }

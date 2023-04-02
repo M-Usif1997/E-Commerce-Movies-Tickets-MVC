@@ -4,7 +4,7 @@ in backend:
 2) Make Auto Mapper
 3) Make ViewModels
 4) Make Service for Authentication & Unit of Works
-5) Make Shopping Cart related to UsersId if userAuthenticated insteads of Sessions
+5) Make Shopping Cart related to UsersId if userAuthenticated insteads of Sessions (sessions must sharable to other browsers)
 
 
 
@@ -19,10 +19,10 @@ in backend:
 
 in frontend:
 ------------
-
-1) auto complete on search engine
-2) Add Ajax Calls on CRUD Operations
-3) Can Upload Photos while add movies
+1)jquery validation    *Done*
+2) auto complete on search engine
+3) Add Ajax Calls on CRUD Operations
+4) Can Upload Photos while add movies
 
 
 

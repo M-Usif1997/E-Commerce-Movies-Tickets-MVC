@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Models
 {
-    public class Producer : IEntityBase
+    public class Producer 
     {
         [Key]
         public int Id { get; set; }

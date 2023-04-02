@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Data.Services
 {
-    public class MoviesService : EntityBaseRepository<Movie>, IMoviesService
+    public class MoviesRepo : EntityBaseRepository<Movie>, IMoviesRepo
     {
         private readonly AppDbContext _context;
-        public MoviesService(AppDbContext context) : base(context)
+        public MoviesRepo(AppDbContext context) : base(context)
         {
             _context = context;
         }

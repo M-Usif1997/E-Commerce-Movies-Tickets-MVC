@@ -46,7 +46,10 @@ namespace E_Commerce_Movies.Controllers
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
                 if (passwordCheck)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password,false,false);
+                  /* .(isPersistent:false) => Session cookies are stored in memory and are deleted when the user closes their browser or navigates away from the website.
+                     . (isPersistent:true) => Persistent cookies are stored on the user's device and remain valid for a specified period of time,
+                     even after the user closes their browser. */
+                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password,isPersistent:false,false);
                     if (result.Succeeded)
                     {
                         return RedirectToAction("Index", "Movies");
@@ -109,6 +112,7 @@ namespace E_Commerce_Movies.Controllers
         {
             var user = await _userManager.FindByNameAsync(username);
 
+
             if (user == null)
             {
                 // ASP.NET Core MVC uses jQuery remote() method which in turn issues an AJAX call to invoke the server side method. 
@@ -121,6 +125,31 @@ namespace E_Commerce_Movies.Controllers
                 return Json($"UserName : {username} is already in use.");
             }
         }
+
+        [AcceptVerbs("Get", "Post")]
+        [AllowAnonymous]
+       
+        public async Task< IActionResult> CheckUniqueEmailAddress(string emailAddress)
+        {
+            var user = await _userManager.FindByEmailAsync(emailAddress);
+
+
+            if (user == null)
+            {
+              
+                return Json(true);
+            }
+            else
+            {
+                return Json($"Email : {emailAddress} is already in use.");
+            }
+        }
+
+
+
+
+
+
 
 
         public IActionResult AccessDenied(string ReturnUrl)

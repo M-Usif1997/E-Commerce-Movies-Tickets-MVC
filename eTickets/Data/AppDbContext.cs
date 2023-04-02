@@ -14,6 +14,9 @@ namespace E_Commerce_Movies.Data
         {
         }
 
+
+        //method is a powerful way to customize the behavior of Entity Framework when
+        //it generates and interacts with the underlying database.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Actor_Movie>().HasKey(am => new

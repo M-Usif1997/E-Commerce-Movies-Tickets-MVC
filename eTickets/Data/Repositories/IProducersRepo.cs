@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Data.Services
 {
-    public interface IProducersService:IEntityBaseRepository<Producer>
+    public interface IProducersRepo:IEntityBaseRepository<Producer>
     {
     }
 }

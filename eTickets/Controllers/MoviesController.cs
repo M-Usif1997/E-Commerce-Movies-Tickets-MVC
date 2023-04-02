@@ -12,17 +12,18 @@ namespace E_Commerce_Movies.Controllers
     [Authorize(Roles = UserRoles.Admin)]
     public class MoviesController : Controller
     {
-        private readonly IMoviesService _service;
+        private readonly IMoviesRepo _moviesRepo;
 
-        public MoviesController(IMoviesService service)
+       
+        public MoviesController(IMoviesRepo moviesRepo)
         {
-            _service = service;
+            _moviesRepo = moviesRepo;
         }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var allMovies = await _service.GetAllAsync(m => m.Cinema);      //To Get Cinemas with Movies
+            var allMovies = await _moviesRepo.GetAllAsync(m => m.Cinema);      //To Get Cinemas with Movies ,notes=>use eager loading 
             return View(allMovies);
         }
 
@@ -31,7 +32,7 @@ namespace E_Commerce_Movies.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Filter(string searchString)
         {
-            var allMovies = await _service.GetAllAsync(n => n.Cinema);
+            var allMovies = await _moviesRepo.GetAllAsync(n => n.Cinema);
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -48,7 +49,7 @@ namespace E_Commerce_Movies.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-            var movieDetail = await _service.GetMovieByIdAsync(id);
+            var movieDetail = await _moviesRepo.GetMovieByIdAsync(id);
             if (movieDetail == null) return View("NotFound",id);
             return View(movieDetail);
         }
@@ -58,7 +59,7 @@ namespace E_Commerce_Movies.Controllers
         //GET: Movies/Create
         public async Task<IActionResult> Create()
         {
-            var movieDropdownsData = await _service.GetNewMovieDropdownsValues();
+            var movieDropdownsData = await _moviesRepo.GetNewMovieDropdownsValues();
 
             ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
             ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
@@ -74,7 +75,8 @@ namespace E_Commerce_Movies.Controllers
 
             if(!ModelState.IsValid)
             {
-                var movieDropdownsData = await _service.GetNewMovieDropdownsValues();
+                //To Show dropdown menus when created post request and validation happen by false 
+                var movieDropdownsData = await _moviesRepo.GetNewMovieDropdownsValues();
 
                 ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
                 ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
@@ -83,7 +85,7 @@ namespace E_Commerce_Movies.Controllers
                 return View(movie);
             }
 
-            await _service.AddNewMovieAsync(movie);
+            await _moviesRepo.AddNewMovieAsync(movie);
 
             return RedirectToAction(nameof(Index));
 
@@ -94,7 +96,7 @@ namespace E_Commerce_Movies.Controllers
         //GET: Movies/Edit/1
         public async Task<IActionResult> Edit(int id)
         {
-            var movieDetail = await _service.GetMovieByIdAsync(id);   //it return Movie not NewMovieVM
+            var movieDetail = await _moviesRepo.GetMovieByIdAsync(id);   //it return Movie domain class bind to database not NewMovieVM view model
             if (movieDetail == null) return View("NotFound", id);
 
             var response = new NewMovieVM()              //Take data of movieDetail to display from database
@@ -113,7 +115,7 @@ namespace E_Commerce_Movies.Controllers
             };
 
 
-            var movieDropdownsData = await _service.GetNewMovieDropdownsValues();
+            var movieDropdownsData = await _moviesRepo.GetNewMovieDropdownsValues();
 
             ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
             ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
@@ -132,7 +134,7 @@ namespace E_Commerce_Movies.Controllers
 
             if (!ModelState.IsValid)
             {
-                var movieDropdownsData = await _service.GetNewMovieDropdownsValues();    //When make post request and javascripts not allowed so to showed data again 
+                var movieDropdownsData = await _moviesRepo.GetNewMovieDropdownsValues();    //When make post request and javascripts not allowed so to showed data again 
 
                 ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
                 ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
@@ -141,7 +143,7 @@ namespace E_Commerce_Movies.Controllers
                 return View(movie);
             }
 
-            await _service.UpdateMovieAsync(movie);
+            await _moviesRepo.UpdateMovieAsync(movie);
 
             return RedirectToAction(nameof(Index));
 

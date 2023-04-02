@@ -1,4 +1,5 @@
 ﻿using E_Commerce_Movies.Data.Base;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Models
 {
-    public class Actor : IEntityBase
+    public class Actor
     {
         [Key]
         public int Id { get; set; }

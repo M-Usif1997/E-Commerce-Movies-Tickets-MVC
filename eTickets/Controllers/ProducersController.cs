@@ -15,17 +15,17 @@ namespace E_Commerce_Movies.Controllers
     [Authorize(Roles = UserRoles.Admin)]
     public class ProducersController : Controller
     {
-        private readonly IProducersService _service;
+        private readonly IProducersRepo _producersRepo;
 
-        public ProducersController(IProducersService service)
+        public ProducersController(IProducersRepo producersRepo)
         {
-            _service = service;
+            _producersRepo = producersRepo;
         }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var allProducers = await _service.GetAllAsync();
+            var allProducers = await _producersRepo.GetAllAsync();
             return View(allProducers);
         }
 
@@ -43,7 +43,7 @@ namespace E_Commerce_Movies.Controllers
             {
                 return View(producer);
             }
-            await _service.AddAsync(producer);
+            await _producersRepo.AddAsync(producer);
             return RedirectToAction(nameof(Index));
         }
 
@@ -53,7 +53,7 @@ namespace E_Commerce_Movies.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-            var ProducerDetails = await _service.GetByIdAsync(id);
+            var ProducerDetails = await _producersRepo.GetByIdAsync(id);
 
             if (ProducerDetails == null) return View("NotFound", id);
             return View(ProducerDetails);
@@ -64,7 +64,7 @@ namespace E_Commerce_Movies.Controllers
         //GET: producers/edit/1
         public async Task<IActionResult> Edit(int id)
         {
-            var producerDetails = await _service.GetByIdAsync(id);
+            var producerDetails = await _producersRepo.GetByIdAsync(id);
             if (producerDetails == null) return View("NotFound",id);
             return View(producerDetails);
         }
@@ -76,7 +76,7 @@ namespace E_Commerce_Movies.Controllers
 
             if (id == producer.Id)
             {
-                await _service.UpdateAsync(id, producer);
+                await _producersRepo.UpdateAsync(id, producer);
                 return RedirectToAction(nameof(Index));
             }
             return View(producer);
@@ -86,7 +86,7 @@ namespace E_Commerce_Movies.Controllers
         //GET: producers/delete/1
         public async Task<IActionResult> Delete(int id)
         {
-            var producerDetails = await _service.GetByIdAsync(id);
+            var producerDetails = await _producersRepo.GetByIdAsync(id);
             if (producerDetails == null) return View("NotFound",id);
             return View(producerDetails);
         }
@@ -94,10 +94,10 @@ namespace E_Commerce_Movies.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var producerDetails = await _service.GetByIdAsync(id);
+            var producerDetails = await _producersRepo.GetByIdAsync(id);
             if (producerDetails == null) return View("NotFound",id);
 
-            await _service.DeleteAsync(id);
+            await _producersRepo.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 

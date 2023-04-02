@@ -8,22 +8,25 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Data.Base
 {
-    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IEntityBase, new()
+    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class
     {
         private readonly AppDbContext _context;
         private DbSet<T> Entities;
+     
         public EntityBaseRepository(AppDbContext context)
         {
             _context = context;
             Entities = _context.Set<T>();
+            
         }
         public async Task AddAsync(T entity)
         {
             await Entities.AddAsync(entity);
             await _context.SaveChangesAsync();
+            
 
         }
-
+        
         public async Task DeleteAsync(int id)
         {
             T existing = await GetByIdAsync(id);
@@ -34,16 +37,17 @@ namespace E_Commerce_Movies.Data.Base
 
         public async Task<IEnumerable<T>> GetAllAsync() => await Entities.ToListAsync();
 
-        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)   //optional parameter with params for include the entity
         {
             IQueryable<T> query = Entities;
+            //retrieving a list of entities from the database using Entity Framework and including related entities in the result set.
             query = includeProperties.Aggregate(query, (current, includeProperties) => current.Include(includeProperties));   // aggregate (TAccumlate seed parameter data Entity  , so current entity is seed to include other entities
             return await query.ToListAsync();
             
         }
-
-        public async Task<T> GetByIdAsync(int id) => await Entities.FirstOrDefaultAsync(n => n.Id == id);
-
+        // Using Find() on a DbSet of entities
+        public async Task<T> GetByIdAsync(int id) => await Entities.FindAsync(id);   // Returns entity with primary key value or null if not found
+        
 
         public async Task UpdateAsync(int id, T entity)
         {

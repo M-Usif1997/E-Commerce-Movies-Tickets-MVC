@@ -15,15 +15,15 @@ namespace E_Commerce_Movies.Controllers
     public class OrdersController : Controller
     {
 
-        private readonly IMoviesService _moviesService;
+        private readonly IMoviesRepo _moviesRepo;
         private readonly ShoppingCart _shoppingCart;
-        private readonly IOrdersService _ordersService;
+        private readonly IOrdersRepo _ordersRepo;
 
-        public OrdersController(IMoviesService moviesService, ShoppingCart shoppingCart, IOrdersService ordersService)
+        public OrdersController(IMoviesRepo moviesRepo, ShoppingCart shoppingCart, IOrdersRepo ordersRepo)
         {
-            _moviesService = moviesService;
+            _moviesRepo = moviesRepo;
             _shoppingCart = shoppingCart;
-            _ordersService = ordersService;
+            _ordersRepo = ordersRepo;
         }
 
 
@@ -33,7 +33,7 @@ namespace E_Commerce_Movies.Controllers
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);               //get the id of the Authenticated User
             string userRole = User.FindFirstValue(ClaimTypes.Role);                        //get the Role of the Authenticated User
 
-            var orders = await _ordersService.GetOrdersByUserIdAsync(userId, userRole);
+            var orders = await _ordersRepo.GetOrdersByUserIdAsync(userId, userRole);
             return View(orders);
         }
 
@@ -46,6 +46,7 @@ namespace E_Commerce_Movies.Controllers
             {
                 ShoppingCart = _shoppingCart,
                 ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+
             };
 
 
@@ -54,7 +55,7 @@ namespace E_Commerce_Movies.Controllers
 
         public async Task<RedirectToActionResult> AddItemToShoppingCart(int id)
         {
-            var item = await _moviesService.GetMovieByIdAsync(id);
+            var item = await _moviesRepo.GetMovieByIdAsync(id);
 
             if (item != null)
             {
@@ -65,7 +66,7 @@ namespace E_Commerce_Movies.Controllers
 
         public async Task<IActionResult> RemoveItemFromShoppingCart(int id)
         {
-            var item = await _moviesService.GetMovieByIdAsync(id);
+            var item = await _moviesRepo.GetMovieByIdAsync(id);
 
             if (item != null)
             {
@@ -80,7 +81,7 @@ namespace E_Commerce_Movies.Controllers
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             string userEmailAddress = User.FindFirstValue(ClaimTypes.Email);
 
-            await _ordersService.StoreOrderAsync(items, userId, userEmailAddress);
+            await _ordersRepo.StoreOrderAsync(items, userId, userEmailAddress);
             await _shoppingCart.ClearShoppingCartAsync();
 
 

@@ -1,12 +1,17 @@
 ﻿using E_Commerce_Movies.Data;
+using E_Commerce_Movies.Data.Repositories;
 using E_Commerce_Movies.Data.Services;
 using E_Commerce_Movies.Data.Static;
 using E_Commerce_Movies.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Controllers
@@ -14,17 +19,17 @@ namespace E_Commerce_Movies.Controllers
     [Authorize(Roles = UserRoles.Admin)]
     public class ActorsController : Controller
     {
-        private readonly IActorsService _service;
+        private readonly IActorsRepo _actorsRepo;
 
-        public ActorsController(IActorsService service)
+        public ActorsController(IActorsRepo actorsRepo)
         {
-            _service = service;
+            _actorsRepo = actorsRepo;
         }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GetAllAsync();
+            var data = await _actorsRepo.GetAllAsync();
             return View(data);
         }
 
@@ -41,7 +46,7 @@ namespace E_Commerce_Movies.Controllers
             {
                 return View(actor);
             }
-            await _service.AddAsync(actor);
+            await _actorsRepo.AddAsync(actor);
             return RedirectToAction(nameof(Index));
         }
 
@@ -49,7 +54,7 @@ namespace E_Commerce_Movies.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-            var actorDetails = await _service.GetByIdAsync(id);
+            var actorDetails = await _actorsRepo.GetByIdAsync(id);
 
             if (actorDetails == null) return View("NotFound",id);
             return View(actorDetails);
@@ -59,26 +64,26 @@ namespace E_Commerce_Movies.Controllers
         public async Task<IActionResult> Edit(int id)
         {
 
-            var actorDetails = await _service.GetByIdAsync(id);
+            var actorDetails = await _actorsRepo.GetByIdAsync(id);
             if (actorDetails == null) return View("NotFound",id);
             return View(actorDetails);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id,Actor actor)
+        public async Task<IActionResult> Edit(int id, Actor actor)
         {
             if (!ModelState.IsValid)
             {
                 return View(actor);
             }
-            await _service.UpdateAsync(id, actor);
+            await _actorsRepo.UpdateAsync(id, actor);
             return RedirectToAction(nameof(Index));
         }
 
         //Get: Actors/Delete/1
         public async Task<IActionResult> Delete(int id)
         {
-            var actorDetails = await _service.GetByIdAsync(id);
+            var actorDetails = await _actorsRepo.GetByIdAsync(id);
             if (actorDetails == null) return View("NotFound",id);
             return View(actorDetails);
         }
@@ -86,10 +91,10 @@ namespace E_Commerce_Movies.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var actorDetails = await _service.GetByIdAsync(id);
+            var actorDetails = await _actorsRepo.GetByIdAsync(id);
             if (actorDetails == null) return View("NotFound",id);
 
-            await _service.DeleteAsync(id);
+            await _actorsRepo.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }

@@ -1,4 +1,5 @@
 ﻿using E_Commerce_Movies.Data;
+using E_Commerce_Movies.Data.Repositories;
 using E_Commerce_Movies.Data.Services;
 using E_Commerce_Movies.Data.Static;
 using E_Commerce_Movies.Models;
@@ -15,17 +16,17 @@ namespace E_Commerce_Movies.Controllers
     [Authorize(Roles = UserRoles.Admin)]
     public class CinemasController : Controller
     {
-        private readonly ICinemasService _service;
+        private readonly ICinemasRepo _cinemasRepo;
 
-        public CinemasController(ICinemasService service)
+        public CinemasController(ICinemasRepo cinemasRepo)
         {
-            _service = service;
+           _cinemasRepo = cinemasRepo;
         }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var allCinemas = await _service.GetAllAsync();
+            var allCinemas = await _cinemasRepo.GetAllAsync();
             return View(allCinemas);
         }
 
@@ -40,7 +41,7 @@ namespace E_Commerce_Movies.Controllers
         public async Task<IActionResult> Create([Bind("Logo,Name,Description")] Cinema cinema)
         {
             if (!ModelState.IsValid) return View(cinema);
-            await _service.AddAsync(cinema);
+            await _cinemasRepo.AddAsync(cinema);
             return RedirectToAction(nameof(Index));
         }
 
@@ -49,7 +50,7 @@ namespace E_Commerce_Movies.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-            var cinemaDetails = await _service.GetByIdAsync(id);
+            var cinemaDetails = await _cinemasRepo.GetByIdAsync(id);
             if (cinemaDetails == null) return View("NotFound",id);
             return View(cinemaDetails);
         }
@@ -57,7 +58,7 @@ namespace E_Commerce_Movies.Controllers
         //Get: Cinemas/Edit/1
         public async Task<IActionResult> Edit(int id)
         {
-            var cinemaDetails = await _service.GetByIdAsync(id);
+            var cinemaDetails = await _cinemasRepo.GetByIdAsync(id);
             if (cinemaDetails == null) return View("NotFound",id);
             return View(cinemaDetails);
         }
@@ -66,7 +67,7 @@ namespace E_Commerce_Movies.Controllers
         public async Task<IActionResult> Edit(int id,Cinema cinema)
         {
             if (!ModelState.IsValid) return View(cinema);
-            await _service.UpdateAsync(id, cinema);
+            await _cinemasRepo.UpdateAsync(id, cinema);
             return RedirectToAction(nameof(Index));
         }
 
@@ -74,7 +75,7 @@ namespace E_Commerce_Movies.Controllers
         //Get: Cinemas/Delete/1
         public async Task<IActionResult> Delete(int id)
         {
-            var cinemaDetails = await _service.GetByIdAsync(id);
+            var cinemaDetails = await _cinemasRepo.GetByIdAsync(id);
             if (cinemaDetails == null) return View("NotFound");
             return View(cinemaDetails);
         }
@@ -82,10 +83,10 @@ namespace E_Commerce_Movies.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            var cinemaDetails = await _service.GetByIdAsync(id);
+            var cinemaDetails = await _cinemasRepo.GetByIdAsync(id);
             if (cinemaDetails == null) return View("NotFound");
 
-            await _service.DeleteAsync(id);
+            await _cinemasRepo.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }

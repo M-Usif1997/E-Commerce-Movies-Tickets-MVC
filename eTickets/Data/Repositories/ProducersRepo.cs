@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_Movies.Data.Services
 {
-    public interface IActorsService:IEntityBaseRepository<Actor>
+    public class ProducersRepo : EntityBaseRepository<Producer>, IProducersRepo
     {
+
+        public ProducersRepo(AppDbContext context) : base(context)
+        {
+        }
     }
 }
